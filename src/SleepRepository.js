@@ -36,6 +36,16 @@ class SleepRepo {
     }, {});
   }
 
+  getAvgSleepStatsByWeek(id, date, stats) {
+    const statsPerWeek = this.getSleepStatsByWeek(id, date, stats);
+    const weeklyStatsSum = Object.values(statsPerWeek).reduce((sum, stat) => {
+      sum += stat
+      return sum
+    }, 0)
+    const roundedAvg = (weeklyStatsSum / 7).toFixed(1)
+    return roundedAvg;
+  }
+
   getAvgSleepQualityForUsers() {
     let avgQuality = this.sleepData.reduce((sum, sleep) => {
       sum += sleep.sleepQuality;

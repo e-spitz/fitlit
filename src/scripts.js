@@ -12,7 +12,6 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
-
 // const address = document.getElementById('address');
 
 let user;
@@ -75,7 +74,6 @@ const setUpSleepRepo = () => {
     .then(data => findDailySleepQuality())
     .then(data => displayDailySleepStats())
     .then(data => findWeeklySleepAvg())
-    .then(data => findWeeklySleepQualityAvg())
     .then(data => displayWeeklySleepAvgs())
   }
 
@@ -135,30 +133,14 @@ const displayDailySleepStats = () => {
   dailySleepQuality.innerText = `${findDailySleepQuality()}`
 }
 // User sleep data over the course of the last week (weekly avg)
-  const findWeeklySleepAvg = () => {
-    const sleepPerWeek = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept');
-    const weeklyHoursSlept = Object.values(sleepPerWeek).reduce((sum, hours) => {
-      sum += hours
-      return sum
-    }, 0)
-    const roundedAvgHoursSlept = (weeklyHoursSlept / 7).toFixed(1)
-    return roundedAvgHoursSlept
-  }
+const findWeeklySleepAvg = (stats) => {
+  return sleepRepo.getAvgSleepStatsByWeek(user.id, currentDate, stats);
+}
 
-  const findWeeklySleepQualityAvg = () => {
-    const sleepQualityPerWeek = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality');
-    const weeklySleepQuality = Object.values(sleepQualityPerWeek).reduce((sum, hours) => {
-      sum += hours
-      return sum
-    }, 0)
-    const roundedAvgSleepQuality = (weeklySleepQuality / 7).toFixed(1)
-    return roundedAvgSleepQuality
-  }
-
-  const displayWeeklySleepAvgs = () => {
-    weeklySleepHours.innerText = `${findWeeklySleepAvg()}`
-    weeklySleepQuality.innerText = `${findWeeklySleepQualityAvg()}`
-  }
+const displayWeeklySleepAvgs = () => {
+  weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
+  weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
+}
 
 // all-time avg sleep quality and all-time avg number of hours slept
   //
