@@ -56,3 +56,24 @@ header {
   display:flex;
   justify-content: space-around;
 }
+
+.steps-chart {
+  height: 25%;
+  width: 25%;
+  float: right;
+}
+
+.weekly-hydration-chart {
+  height: 75%;
+  width: 75%;
+}
+
+.weekly-sleep-chart {
+  height: 75%;
+  width: 75%;
+}
+
+.daily-water-chart {
+  height: 75%;
+  width: 75%;
+}

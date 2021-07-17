@@ -12,7 +12,10 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
-// const address = document.getElementById('address');
+const stepsChart = document.getElementById('stepsChart');
+const weeklyHydrationChart = document.getElementById('weeklyHydrationChart');
+const weeklySleepChart = document.getElementById('weeklySleepChart');
+const dailyWaterChart = document.getElementById('dailyWaterChart');
 
 let user;
 let userRepo;
@@ -88,27 +91,116 @@ const setUpSleepRepo = () => {
   address.innerText = `Address: ${user.address}`
   displayGreeting(user);
 };
-//Display first name
-  //Replace greeting inner text to reflect the first name of the user
-    // use .returnFirstName() in user class
+
 const displayGreeting = (user) => {
   const firstName = user.returnFirstName();
   greeting.innerText = `Hello, ${firstName}!`;
 };
-//Display how the specific user's step goal compares to the average step goal amongst all Users
-  //
+
 const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
+  displayStepChart();
 };
-// display how much water consumed today
-  //locate the latest day
-  //run through hydrationRepo & match the ID of the user & the date to the latest day
+
+const displayStepChart = () => {
+  let stepChart = new Chart(stepsChart, {
+    type: 'bar',
+    data: {
+      labels: ['Daily Step Goal', 'Average User Goal'],
+      datasets: [
+        {
+          label: 'Steps',
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [user.dailyStepGoal, userRepo.calculateAvgStepGoal()]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: false,
+        text: ''
+      }
+    }
+  });
+}
+
+const displayWeeklyHydration = () => {
+  let weeklyHydration = new Chart(weeklyHydrationChart, {
+    type: 'line',
+    data: {
+      labels: Object.keys(hydrationRepo.getOuncesByWeek(user.id, currentDate)),
+      datasets: [{
+          data: Object.values(hydrationRepo.getOuncesByWeek(user.id, currentDate)),
+          label: "Ounces",
+          borderColor: "#3e95cd",
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly Hydration'
+      }
+    }
+  });
+}
+
+const displayWeeklySleep = () => {
+  let weeklySleep = new Chart(weeklySleepChart, {
+    type: 'line',
+    data: {
+      labels: Object.keys(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
+      datasets: [{
+          data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
+          label: "Hours Slept",
+          borderColor: "#3e95cd",
+          fill: false
+        },
+        {
+        data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality')),
+        label: "Sleep Quality",
+        borderColor: "#3e95cd",
+        fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly Sleep Stats'
+      }
+    }
+  });
+}
+
+const displayDailyWater = () => {
+  let dailyWaterComp = new Chart(dailyWaterChart, {
+    type: 'doughnut',
+    data: {
+      labels: ['Daily Water Consumption', 'Recommended Consumption'],
+      datasets: [
+        {
+          label: 'Ounces of Water',
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [hydration.numOunces, 75]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Daily Water Consumption (in ounces)'
+      }
+    }
+  });
+}
 
 const findCurrentDate = () => {
   currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
-  console.log(currentDate);
   return currentDate
 };
 
@@ -117,9 +209,11 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
-  dailyWater.innerText = `${findDailyHydration()}`
+  dailyWater.innerText = `${findDailyHydration()}`;
+  displayWeeklyHydration();
+  displayDailyWater();
 }
-// User sleep Data for the latest day
+
 const findDailyHoursOfSleep = () => {
   return sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
 }
@@ -132,7 +226,7 @@ const displayDailySleepStats = () => {
   dailySleepHours.innerText = `${findDailyHoursOfSleep()}`
   dailySleepQuality.innerText = `${findDailySleepQuality()}`
 }
-// User sleep data over the course of the last week (weekly avg)
+
 const findWeeklySleepAvg = (stats) => {
   return sleepRepo.getAvgSleepStatsByWeek(user.id, currentDate, stats);
 }
@@ -140,7 +234,5 @@ const findWeeklySleepAvg = (stats) => {
 const displayWeeklySleepAvgs = () => {
   weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
   weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
+  displayWeeklySleep();
 }
-
-// all-time avg sleep quality and all-time avg number of hours slept
-  //

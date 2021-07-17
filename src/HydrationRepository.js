@@ -27,12 +27,13 @@ class HydrationRepo {
     let userHydrationData = this.getHydrationById(id);
     let hydrationDates = userHydrationData.map(hydration => hydration.date);
     let indexOfDate = hydrationDates.indexOf(date);
-    let hydrationByDate = userHydrationData.slice(indexOfDate, indexOfDate + 7);
+    let hydrationByDate = userHydrationData.slice(indexOfDate - 6, indexOfDate + 1);
     return hydrationByDate.reduce((obj, hydration) => {
       obj[hydration.date] = hydration.numOunces;
       return obj;
     }, {});
   }
+
 }
 
 export default HydrationRepo;

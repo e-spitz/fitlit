@@ -27,7 +27,9 @@
         <p id ="stepGoal2">Step Goal w/ #</p>
         <p id = "avgSteps">Average User's Step Goal</p>
       </section>
-      <!-- <script>Chart</script> -->
+      <div class="steps-chart">
+        <canvas id="stepsChart" width="1" height="1"></canvas>
+      </div>
     </header>
     <h2><i class= "fas fa-tint"></i>Hydration</h2>
     <div class="hydration-section">
@@ -40,10 +42,14 @@
           </div>
         </section>
         <section class="info-card">
-          Daily water chart
+          <div class="daily-water-chart">
+            <canvas id="dailyWaterChart" width="1" height="1"></canvas>
+          </div>
         </section>
         <section class="info-card">
-          Weekly water chart
+          <div class="weekly-hydration-chart">
+            <canvas id="weeklyHydrationChart" width="1" height="1"></canvas>
+          </div>
         </section>
       </section>
     </div>
@@ -69,12 +75,15 @@
           </div>
         </section>
         <section class="info-card">
-          Weekly Sleep chart
+          <div class="weekly-sleep-chart">
+            <canvas id="weeklySleepChart" width="1" height="1"></canvas>
+          </div>
         </section>
       </section>
     </div>
 
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="bundle.js"></script>
   </body>
 </html>
