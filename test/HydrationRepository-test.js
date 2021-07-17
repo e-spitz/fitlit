@@ -47,17 +47,17 @@ describe('Hydration Repo', () => {
   });
 
   it('should return a user\'s ounces consumed for each day in a given week', () => {
-    let weeklyOunces = hydrationRepo.getOuncesByWeek(1,'2019/06/19');
+    let weeklyOunces = hydrationRepo.getOuncesByWeek(1,'2019/06/23');
 
     expect(weeklyOunces).to.be.a('object');
     expect(weeklyOunces).to.deep.equal({
+      '2019/06/17': 96,
+      '2019/06/18': 61,
       '2019/06/19': 91,
       '2019/06/20': 50,
       '2019/06/21': 50,
       '2019/06/22': 43,
-      '2019/06/23': 39,
-      '2019/06/24': 61,
-      '2019/06/25': 51
+      '2019/06/23': 39
     });
   });
 });
