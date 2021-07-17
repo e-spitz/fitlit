@@ -15,6 +15,7 @@ import SleepRepo from './SleepRepository';
 const stepsChart = document.getElementById('stepsChart');
 const weeklyHydrationChart = document.getElementById('weeklyHydrationChart');
 const weeklySleepChart = document.getElementById('weeklySleepChart');
+const dailyWaterChart = document.getElementById('dailyWaterChart');
 
 let user;
 let userRepo;
@@ -181,6 +182,29 @@ const displayWeeklySleep = () => {
   });
   return weeklySleep;
 }
+
+const displayDailyWater = () => {
+  let dailyWaterComp = new Chart(dailyWaterChart, {
+    type: 'doughnut',
+    data: {
+      labels: ['Daily Water Consumption', 'Recommended Consumption'],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [hydration.numOunces, 75]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Daily Water Comparison (in ounces)'
+      }
+    }
+  });
+  return dailyWaterComp;
+}
 // display how much water consumed today
   //locate the latest day
   //run through hydrationRepo & match the ID of the user & the date to the latest day
@@ -197,6 +221,7 @@ const findDailyHydration = () => {
 const displayHydration = () => {
   dailyWater.innerText = `${findDailyHydration()}`;
   displayWeeklyHydration();
+  displayDailyWater();
 }
 // User sleep Data for the latest day
 const findDailyHoursOfSleep = () => {
