@@ -12,8 +12,9 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
-const stepsChart = document.getElementById('stepsChart')
-const weeklyHydrationChart = document.getElementById('weeklyHydrationChart')
+const stepsChart = document.getElementById('stepsChart');
+const weeklyHydrationChart = document.getElementById('weeklyHydrationChart');
+const weeklySleepChart = document.getElementById('weeklySleepChart');
 
 let user;
 let userRepo;
@@ -151,13 +152,41 @@ const displayWeeklyHydration = () => {
   });
   return weeklyHydration;
 }
+
+const displayWeeklySleep = () => {
+  let weeklySleep = new Chart(weeklySleepChart, {
+    type: 'line',
+    data: {
+      labels: Object.keys(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
+      datasets: [{
+          data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
+          label: "Hours Slept",
+          borderColor: "#3e95cd",
+          fill: false
+        },
+        {
+        data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality')),
+        label: "Sleep Quality",
+        borderColor: "#3e95cd",
+        fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly Sleep Stats'
+      }
+    }
+  });
+  return weeklySleep;
+}
 // display how much water consumed today
   //locate the latest day
   //run through hydrationRepo & match the ID of the user & the date to the latest day
 
 const findCurrentDate = () => {
   currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
-  console.log(currentDate);
   return currentDate
 };
 
@@ -190,6 +219,7 @@ const findWeeklySleepAvg = (stats) => {
 const displayWeeklySleepAvgs = () => {
   weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
   weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
+  displayWeeklySleep();
 }
 
 // all-time avg sleep quality and all-time avg number of hours slept
