@@ -12,7 +12,6 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
-
 // const address = document.getElementById('address');
 
 let user;

@@ -3,7 +3,7 @@ import { sleepTestData } from '../src/data/sleep-test-data';
 import SleepRepo from '../src/SleepRepository';
 import Sleep from '../src/Sleep';
 
-describe.only('Sleep Repo', () => {
+describe('Sleep Repo', () => {
   let sleepRepo, sleepData;
 
   beforeEach(() => {
@@ -96,11 +96,24 @@ describe.only('Sleep Repo', () => {
     });
   });
 
+  it('should return a user\'s hours of sleep for each day in a given week', () => {
+    let weeklyHoursAvg = sleepRepo.getAvgSleepStatsByWeek(1,'2019/06/23', 'hoursSlept');
+
+    expect(weeklyHoursAvg).to.be.a('string');
+    expect(weeklyHoursAvg).to.equal('8.7');
+  });
+
+  it('should return a user\'s sleep quality for each day in a given week', () => {
+    let weeklySleepQualityAvg = sleepRepo.getAvgSleepStatsByWeek(1, '2019/06/23', 'sleepQuality');
+
+    expect(weeklySleepQualityAvg).to.be.a('string');
+    expect(weeklySleepQualityAvg).to.equal('2.4');
+  });
+
   it('should find the average sleep quality of all users', () => {
     let avgQuality = sleepRepo.getAvgSleepQualityForUsers();
 
     expect(avgQuality).to.be.a('number');
     expect(avgQuality).to.equal(3);
   });
-
-});
+})
