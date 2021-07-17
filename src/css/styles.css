@@ -56,3 +56,9 @@ header {
   display:flex;
   justify-content: space-around;
 }
+
+.steps-chart {
+  height: 30%;
+  width: 25%;
+  float: right;
+}

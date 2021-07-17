@@ -12,7 +12,7 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
-// const address = document.getElementById('address');
+const stepsChart = document.getElementById('stepsChart')
 
 let user;
 let userRepo;
@@ -101,7 +101,32 @@ const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
+  displayStepChart();
 };
+
+const displayStepChart = () => {
+  let stepChart = new Chart(stepsChart, {
+    type: 'bar',
+    data: {
+      labels: ['Daily Step Goal', 'Average User Goal'],
+      datasets: [
+        {
+          label: 'Steps',
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [user.dailyStepGoal, userRepo.calculateAvgStepGoal()]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: false,
+        text: 'TEST TEST'
+      }
+    }
+  });
+  return stepChart;
+}
 // display how much water consumed today
   //locate the latest day
   //run through hydrationRepo & match the ID of the user & the date to the latest day
