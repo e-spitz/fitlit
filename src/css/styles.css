@@ -58,7 +58,12 @@ header {
 }
 
 .steps-chart {
-  height: 30%;
+  height: 25%;
   width: 25%;
   float: right;
+}
+
+.weekly-hydration-chart {
+  height: 75%;
+  width: 75%;
 }
