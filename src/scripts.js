@@ -71,6 +71,12 @@ const setUpSleepRepo = () => {
     fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
     .then(data => console.log('sleepRepo', sleepRepo))
+    .then(data => findDailyHoursOfSleep())
+    .then(data => findDailySleepQuality())
+    .then(data => displayDailySleepStats())
+    .then(data => findWeeklySleepAvg())
+    .then(data => findWeeklySleepQualityAvg())
+    .then(data => displayWeeklySleepAvgs())
   }
 
 
@@ -113,5 +119,46 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
-  dailyWater.innerText = `Daily water consumption ${findDailyHydration()} ounces`
+  dailyWater.innerText = `${findDailyHydration()}`
 }
+// User sleep Data for the latest day
+const findDailyHoursOfSleep = () => {
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
+}
+
+const findDailySleepQuality = () => {
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
+}
+
+const displayDailySleepStats = () => {
+  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`
+  dailySleepQuality.innerText = `${findDailySleepQuality()}`
+}
+// User sleep data over the course of the last week (weekly avg)
+  const findWeeklySleepAvg = () => {
+    const sleepPerWeek = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept');
+    const weeklyHoursSlept = Object.values(sleepPerWeek).reduce((sum, hours) => {
+      sum += hours
+      return sum
+    }, 0)
+    const roundedAvgHoursSlept = (weeklyHoursSlept / 7).toFixed(1)
+    return roundedAvgHoursSlept
+  }
+
+  const findWeeklySleepQualityAvg = () => {
+    const sleepQualityPerWeek = sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality');
+    const weeklySleepQuality = Object.values(sleepQualityPerWeek).reduce((sum, hours) => {
+      sum += hours
+      return sum
+    }, 0)
+    const roundedAvgSleepQuality = (weeklySleepQuality / 7).toFixed(1)
+    return roundedAvgSleepQuality
+  }
+
+  const displayWeeklySleepAvgs = () => {
+    weeklySleepHours.innerText = `${findWeeklySleepAvg()}`
+    weeklySleepQuality.innerText = `${findWeeklySleepQualityAvg()}`
+  }
+
+// all-time avg sleep quality and all-time avg number of hours slept
+  //
