@@ -13,6 +13,8 @@ h1 {
 
 h2, h3 {
   font-size: 18px;
+  padding-top: 40px;
+  padding-bottom: 8px;
 }
 
 header {
@@ -28,7 +30,8 @@ header {
   height: 100%;
   flex-wrap: wrap;
   border-top: 3px solid blue;
-  padding-top: 15px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .info-card {
