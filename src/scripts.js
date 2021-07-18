@@ -90,7 +90,7 @@ const setUpSleepRepo = () => {
   stepGoal.insertAdjacentHTML('afterend', `<p class='user-step-goal'>${user.dailyStepGoal}</p>`);
   changeAddressFormat();
   displayGreeting(user);
-};
+}
 
 const changeAddressFormat = () => {
     let split = user.address.split(', ')
@@ -102,14 +102,14 @@ const changeAddressFormat = () => {
 const displayGreeting = (user) => {
   const firstName = user.returnFirstName();
   greeting.innerText = `Welcome, ${firstName}!`;
-};
+}
 
 const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
   stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
   avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
   displayStepChart();
-};
+}
 
 const displayStepChart = () => {
   let stepChart = new Chart(stepsChart, {

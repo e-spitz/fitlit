@@ -74,7 +74,7 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   background-color: #3c3e3c;
-  width: 22%;
+  width: 25%;
   height: 115%;
   border-radius: 2.5%;
 }
@@ -106,13 +106,18 @@ header {
   float: right;
 }
 
+.chart {
+  height: 75%;
+  width: 75%;
+}
+
 .weekly-hydration-chart,
 .weekly-sleep-chart,
 .daily-water-chart {
   display: flex;
   justify-content: center;
-  height: 80%;
-  width: 80%;
+  height: 75%;
+  width: 75%;
 }
 
 /* .weekly-sleep-chart {
@@ -130,7 +135,7 @@ header {
 } */
 
 .display-number {
-  font-size: 4em;
+  font-size: 4rem;
 }
 
 h4, h5, h6 {
