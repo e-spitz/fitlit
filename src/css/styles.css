@@ -76,12 +76,8 @@ header {
   background-color: #3c3e3c;
   width: 22%;
   height: 115%;
-  border-radius: 10px;
+  border-radius: 2.5%;
 }
-
-/* .sleep-section {
-  height: 30vh;
-} */
 
 .hydration-section, .sleep-section {
   height: 30vh;
@@ -110,28 +106,36 @@ header {
   float: right;
 }
 
-.weekly-hydration-chart {
-  height: 75%;
-  width: 75%;
-}
-
-.weekly-sleep-chart {
-  height: 75%;
-  width: 75%;
-  align-items: center;
-}
-
+.weekly-hydration-chart,
+.weekly-sleep-chart,
 .daily-water-chart {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  width: 80%;
+}
+
+/* .weekly-sleep-chart {
+  display: flex;
+  justify-content: center;
   height: 75%;
   width: 75%;
-}
+} */
+
+/* .daily-water-chart {
+  display: flex;
+  justify-content: center;
+  height: 75%;
+  width: 75%;
+} */
 
 .display-number {
-  font-size: 60px;
+  font-size: 4em;
 }
 
 h4, h5, h6 {
-  font-size: 15px;
+  font-size: 1.1em;
+  font-weight: lighter;
   text-align: center;
   margin: 25px;
 }

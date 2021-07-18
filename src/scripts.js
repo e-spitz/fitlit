@@ -178,7 +178,7 @@ const displayWeeklySleep = () => {
     options: {
       title: {
         display: true,
-        text: 'Weekly Sleep Stats'
+        text: 'Weekly Sleep Stats',
       }
     }
   });
