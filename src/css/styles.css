@@ -21,7 +21,16 @@ header {
   display: flex;
   background-color: #3c3e3c;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
+}
+
+.greeting {
+  font-size: 3em;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-bottom: 8%;
+  margin-left: 8%;
 }
 
 .user-info {
@@ -54,6 +63,7 @@ header {
 .user-profile-info {
   display: flex;
   justify-content: space-evenly;
+  margin-left: 4%;
 }
 
 .water-stat {

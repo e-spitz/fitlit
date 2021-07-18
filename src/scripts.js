@@ -88,13 +88,29 @@ const setUpSleepRepo = () => {
   strideLength.innerText = `Stride Length: ${user.strideLength}`
   email.innerText = `Email: ${user.email}`
   stepGoal.innerText = `Step Goal: ${user.dailyStepGoal}`
-  address.innerText = `Address: ${user.address}`
+  // address.innerHTML = `<p>Address: <br>${user.address}</p>`
+  changeAddressFormat();
   displayGreeting(user);
+  // changeAddressFormat()
 };
+
+const changeAddressFormat = () => {
+    let split = user.address.split(', ')
+    let street = split[0];
+    console.log(street)
+    let cityStateZip = split[1]
+    console.log(cityStateZip)
+    address.innerHTML = `
+    <p>Address: <br>${street},<br>${cityStateZip}`
+    // let test = cityState.split(' ')
+    // console.log(test)
+    // console.log(split)
+    // return `${street} `
+}
 
 const displayGreeting = (user) => {
   const firstName = user.returnFirstName();
-  greeting.innerText = `Hello, ${firstName}!`;
+  greeting.innerText = `Welcome, ${firstName}!`;
 };
 
 const displayStepGoals = () => {
