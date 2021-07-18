@@ -1,6 +1,7 @@
 * {
   font-family: 'Montserrat', 'sans-serif';
   color: #ffffff;
+  /* border: 1px white solid; */
 }
 
 body, html {
@@ -12,9 +13,20 @@ h1 {
 }
 
 h2, h3 {
-  font-size: 18px;
-  padding-top: 40px;
-  padding-bottom: 8px;
+  font-size: 2em;
+  padding-top: 1%;
+  /* padding-bottom: 1%; */
+  color: #3cba9f;
+  margin-left: 1%;
+}
+
+h3{
+  margin-top: 6%;
+}
+
+.fas {
+  margin-right: 1%;
+  /* font-size: 2em; */
 }
 
 header {
@@ -27,41 +39,53 @@ header {
 
 .greeting {
   font-size: 3em;
-  font-weight: 400;
+  font-weight: bold;
   margin-bottom: 0;
-  padding-bottom: 8%;
-  margin-left: 8%;
+  padding-bottom: 6%;
+  margin-left: 6%;
 }
 
 .user-info {
+  margin: 0;
   display: flex;
   justify-content: space-evenly;
   height: 100%;
   flex-wrap: wrap;
   border-top: 3px solid blue;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 2%;
+  /* padding-bottom:  */
+}
+
+.user-stride, .user-step-goal, .user-address, .user-email {
+  margin-top: -1em;
+  margin-right: .5em;
+  font-size: 1.2em;
+
 }
 
 .profile-sections {
   font-weight: bold;
+  font-size: 1.5em;
+  color: #3cba9f;
 }
 
 .info-card {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   background-color: #3c3e3c;
   width: 22%;
-  height: 100%;
+  height: 115%;
   border-radius: 10px;
 }
 
-.sleep-section {
+/* .sleep-section {
   height: 30vh;
-}
+} */
 
-.hydration-section {
+.hydration-section, .sleep-section {
   height: 30vh;
+  margin-top: -1.5%;
 }
 
 .user-profile-info {
