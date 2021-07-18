@@ -51,22 +51,50 @@ header {
   justify-content: space-evenly;
   height: 100%;
   flex-wrap: wrap;
-  border-top: 3px solid blue;
+  border-top: 3px solid #3e95cd;
   padding-top: 2%;
-  /* padding-bottom:  */
 }
 
 .user-stride, .user-step-goal, .user-address, .user-email {
   margin-top: -1em;
   margin-right: .5em;
   font-size: 1.2em;
-
 }
 
 .profile-sections {
   font-weight: bold;
   font-size: 1.5em;
   color: #3cba9f;
+}
+
+.step-info {
+  font-size: 1.5em;
+  padding: 1%;
+  height: 100%;
+  width: 20%;
+  border: 1px solid #3cba9f;
+  text-align: center;
+  border-radius: 2%;
+}
+
+.steps-goal, .average-steps {
+  margin: 0;
+  font-weight: 500;
+  padding: 5%;
+}
+
+.steps, .avg-user-steps {
+  font-size: 1.75em;
+  font-weight: lighter;
+  padding: 2.5%;
+}
+
+.steps-goal {
+  color: #3e95cd;
+}
+
+.average-steps {
+  color: #8e5ea2;
 }
 
 .info-card {
@@ -96,17 +124,10 @@ header {
   flex-wrap: wrap;
 }
 
-/*
-.sleep-word-alignment {
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
-} */
-
-
 .steps-chart {
-  height: 20%;
-  width: 20%;
+  height: 25%;
+  width: 25%;
+  margin-right: 2%;
   float: right;
 }
 
