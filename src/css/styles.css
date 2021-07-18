@@ -5,11 +5,16 @@
 
 body, html {
   background-color: #161C23;
-  font-family:
 }
 
 h1 {
   font-size: 20px;
+}
+
+h2, h3 {
+  font-size: 18px;
+  padding-top: 40px;
+  padding-bottom: 8px;
 }
 
 header {
@@ -24,6 +29,9 @@ header {
   justify-content: space-evenly;
   height: 100%;
   flex-wrap: wrap;
+  border-top: 3px solid blue;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .info-card {
@@ -32,14 +40,15 @@ header {
   background-color: #3c3e3c;
   width: 22%;
   height: 100%;
+  border-radius: 10px;
 }
 
 .sleep-section {
-  height: 25vh;
+  height: 30vh;
 }
 
 .hydration-section {
-  height: 25vh;
+  height: 30vh;
 }
 
 .user-profile-info {
@@ -47,15 +56,15 @@ header {
   justify-content: space-evenly;
 }
 
-.stat {
-  display:flex;
+.water-stat {
+  display: flex;
   flex-direction: column;
 }
 
-.adjacent-stats {
+/* .adjacent-stats {
   display:flex;
-  justify-content: space-around;
-}
+  /* justify-content: space-around; */
+
 
 .steps-chart {
   height: 25%;
@@ -71,9 +80,43 @@ header {
 .weekly-sleep-chart {
   height: 75%;
   width: 75%;
+  align-items: center;
 }
 
 .daily-water-chart {
   height: 75%;
   width: 75%;
+}
+
+.display-number {
+  font-size: 60px;
+}
+
+h4, h5, h6 {
+  font-size: 15px;
+  text-align: center;
+  margin: 25px;
+}
+
+.water-text-styling {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sleep-card-styling {
+  display: flex;
+  flex-direction: column;
+}
+
+.adjacent-stats {
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.sleep-word-alignment {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
