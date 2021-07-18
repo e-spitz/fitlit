@@ -85,24 +85,31 @@ const setUpSleepRepo = () => {
 // Display user info
   // replace innerText of all user profile info fields to reflect the current random user
  const displayUserProfile = (user) => {
-  strideLength.innerText = `Stride Length: ${user.strideLength}`
-  email.innerText = `Email: ${user.email}`
-  stepGoal.innerText = `Step Goal: ${user.dailyStepGoal}`
-  address.innerText = `Address: ${user.address}`
+  strideLength.insertAdjacentHTML('afterend', `<p class='user-stride'>${user.strideLength}</p>`);
+  email.insertAdjacentHTML('afterend', `<p class='user-email'>${user.email}</p>`);
+  stepGoal.insertAdjacentHTML('afterend', `<p class='user-step-goal'>${user.dailyStepGoal}</p>`);
+  changeAddressFormat();
   displayGreeting(user);
-};
+}
+
+const changeAddressFormat = () => {
+    let split = user.address.split(', ')
+    let street = split[0];
+    let cityStateZip = split[1]
+    address.insertAdjacentHTML('afterend', `<p class='user-address'>${street},<br>${cityStateZip}</p>`);
+}
 
 const displayGreeting = (user) => {
   const firstName = user.returnFirstName();
-  greeting.innerText = `Hello, ${firstName}!`;
-};
+  greeting.innerText = `Welcome, ${firstName}!`;
+}
 
 const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
-  stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
-  avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
+  stepGoal2.insertAdjacentHTML('afterend', `<div class='steps'> ${user.dailyStepGoal}</div>`);
+  avgSteps.insertAdjacentHTML('afterend', `<div class='avg-user-steps'> ${userAvg}</div>`);
   displayStepChart();
-};
+}
 
 const displayStepChart = () => {
   let stepChart = new Chart(stepsChart, {
@@ -171,7 +178,7 @@ const displayWeeklySleep = () => {
     options: {
       title: {
         display: true,
-        text: 'Weekly Sleep Stats'
+        text: 'Weekly Sleep Stats',
       }
     }
   });
