@@ -106,8 +106,8 @@ const displayGreeting = (user) => {
 
 const displayStepGoals = () => {
   const userAvg = userRepo.calculateAvgStepGoal();
-  stepGoal2.innerText = `Step Goal: ${user.dailyStepGoal}`
-  avgSteps.innerText = `Average Steps for all users: ${userAvg}`;
+  stepGoal2.insertAdjacentHTML('afterend', `<div class='steps'> ${user.dailyStepGoal}</div>`);
+  avgSteps.insertAdjacentHTML('afterend', `<div class='avg-user-steps'> ${userAvg}</div>`);
   displayStepChart();
 }
 
