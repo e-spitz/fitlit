@@ -43,6 +43,10 @@ header {
   padding-bottom: 10px;
 }
 
+.profile-sections {
+  font-weight: bold;
+}
+
 .info-card {
   display: flex;
   flex-wrap: wrap;

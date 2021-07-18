@@ -85,27 +85,18 @@ const setUpSleepRepo = () => {
 // Display user info
   // replace innerText of all user profile info fields to reflect the current random user
  const displayUserProfile = (user) => {
-  strideLength.innerText = `Stride Length: ${user.strideLength}`
-  email.innerText = `Email: ${user.email}`
-  stepGoal.innerText = `Step Goal: ${user.dailyStepGoal}`
-  // address.innerHTML = `<p>Address: <br>${user.address}</p>`
+  strideLength.insertAdjacentHTML('afterend', `<div class='user-stride'>${user.strideLength}</div>`);
+  email.insertAdjacentHTML('afterend', `<div class='user-email'>${user.email}</div>`);
+  stepGoal.insertAdjacentHTML('afterend', `<div class='user-step-goal'>${user.dailyStepGoal}</div>`);
   changeAddressFormat();
   displayGreeting(user);
-  // changeAddressFormat()
 };
 
 const changeAddressFormat = () => {
     let split = user.address.split(', ')
     let street = split[0];
-    console.log(street)
     let cityStateZip = split[1]
-    console.log(cityStateZip)
-    address.innerHTML = `
-    <p>Address: <br>${street},<br>${cityStateZip}`
-    // let test = cityState.split(' ')
-    // console.log(test)
-    // console.log(split)
-    // return `${street} `
+    address.insertAdjacentHTML('afterend', `<div class='user-address'>${street},<br>${cityStateZip}</div>`);
 }
 
 const displayGreeting = (user) => {
