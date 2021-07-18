@@ -101,7 +101,12 @@ h4, h5, h6 {
   align-items: center;
 }
 
-/* .sleep-card-styling {
+.sleep-card-styling {
   display: flex;
   flex-direction: column;
-} */
+}
+
+.adjacent-stats {
+  display: flex;
+  justify-content:space-evenly;
+}
