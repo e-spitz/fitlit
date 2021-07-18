@@ -92,6 +92,7 @@ header {
 h4, h5, h6 {
   font-size: 15px;
   text-align: center;
+  margin: 25px;
 }
 
 .water-text-styling {
@@ -109,4 +110,10 @@ h4, h5, h6 {
 .adjacent-stats {
   display: flex;
   justify-content:space-evenly;
+}
+
+.sleep-word-alignment {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
