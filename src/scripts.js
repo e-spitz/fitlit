@@ -58,7 +58,6 @@ const setUpHydrationRepo = () => {
   fetchAPIData('hydration')
   .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
   .then(data => console.log('hydrationRepo', hydrationRepo))
-  .then(data => findCurrentDate())
   .then(data => displayHydration())
 }
 
@@ -215,7 +214,8 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
-  findDailyHydration()
+  findCurrentDate();
+  findDailyHydration();
   dailyWater.innerText = `${findDailyHydration()}`;
   displayWeeklyHydration();
   displayDailyWater();
