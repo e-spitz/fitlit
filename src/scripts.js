@@ -36,48 +36,38 @@ window.addEventListener('load', function() {
 const generateUser = () => {
   fetchAPIData('users')
   .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
-  .then(data => console.log('userAPI', user))
   .then(data => displayUserProfile(user));
 }
 
 const setUpUserRepo = () => {
   fetchAPIData('users')
   .then(data => userRepo = new UserRepository(data.userData))
-  .then(data => console.log('userRepo', userRepo))
   .then(data => displayStepGoals())
 }
 
 const generateHydration = () => {
   fetchAPIData('hydration')
   .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
-  .then(data => console.log('hydrationAPI', hydration))
 }
 
 const setUpHydrationRepo = () => {
   fetchAPIData('hydration')
   .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-  .then(data => console.log('hydrationRepo', hydrationRepo))
   .then(data => displayHydration())
 }
 
 const generateSleep = () => {
   fetchAPIData('sleep')
   .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
-  .then(data => console.log('sleepAPI', sleep))
 }
 
 const setUpSleepRepo = () => {
     fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
-    .then(data => console.log('sleepRepo', sleepRepo))
     .then(data => displayDailySleepStats())
     .then(data => displayWeeklySleepAvgs())
   }
 
-
-// ON PAGE LOAD
-// Display user info
-  // replace innerText of all user profile info fields to reflect the current random user
  const displayUserProfile = (user) => {
   strideLength.insertAdjacentHTML('afterend', `<p class='user-stride'>${user.strideLength}</p>`);
   email.insertAdjacentHTML('afterend', `<p class='user-email'>${user.email}</p>`);
