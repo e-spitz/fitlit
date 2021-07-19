@@ -71,8 +71,6 @@ const setUpSleepRepo = () => {
     fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
     .then(data => console.log('sleepRepo', sleepRepo))
-    .then(data => findDailyHoursOfSleep())
-    .then(data => findDailySleepQuality())
     .then(data => displayDailySleepStats())
     .then(data => findWeeklySleepAvg())
     .then(data => displayWeeklySleepAvgs())
@@ -235,6 +233,8 @@ const displayDailySleepStats = () => {
 }
 
 const findWeeklySleepAvg = (stats) => {
+  findDailyHoursOfSleep();
+  displayDailySleepStats();
   return sleepRepo.getAvgSleepStatsByWeek(user.id, currentDate, stats);
 }
 
