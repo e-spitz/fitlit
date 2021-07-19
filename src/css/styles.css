@@ -111,12 +111,13 @@ header {
 .hydration-section, .sleep-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
   align-items: center;
-  gap: 1em;
-  height: 90%;
+  gap: 3em;
+  height: 75%;
   width: 100%;
-  margin-top: -1%;
-  margin-bottom: -4%;
+  margin-bottom: -5%;
+  margin-left: 1%;
 }
 
 .user-profile-info {
@@ -133,14 +134,14 @@ header {
 .steps-chart {
   height: 25%;
   width: 25%;
-  margin-right: 2%;
+  /* margin-right: 2%; */
   float: right;
 }
 
 .weekly-hydration-chart,
 .weekly-sleep-chart,
 .daily-water-chart {
-  height: 75%;
+  height: 70%;
   width: 70%;
   padding: 1em;
 }
