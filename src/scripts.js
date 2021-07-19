@@ -12,18 +12,18 @@ import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
 
+const dailyWaterChart = document.getElementById('dailyWaterChart');
 const stepsChart = document.getElementById('stepsChart');
 const weeklyHydrationChart = document.getElementById('weeklyHydrationChart');
 const weeklySleepChart = document.getElementById('weeklySleepChart');
-const dailyWaterChart = document.getElementById('dailyWaterChart');
 
-let user;
-let userRepo;
+let currentDate;
 let hydration;
 let hydrationRepo;
 let sleep;
 let sleepRepo;
-let currentDate;
+let user;
+let userRepo;
 
 window.addEventListener('load', function() {
   generateUser();
