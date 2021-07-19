@@ -5,12 +5,12 @@ import './css/styles.css';
 import './images/turing-logo.png'
 
 import { fetchAPIData } from './apiCalls'
-import User from './User';
-import UserRepository from './UserRepository';
 import Hydration from './Hydration';
 import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
+import User from './User';
+import UserRepository from './UserRepository';
 
 const dailyWaterChart = document.getElementById('dailyWaterChart');
 const stepsChart = document.getElementById('stepsChart');
@@ -45,7 +45,7 @@ const setUpUserRepo = () => {
   fetchAPIData('users')
   .then(data => userRepo = new UserRepository(data.userData))
   .then(data => console.log('userRepo', userRepo))
-  .then(data => displayStepGoals(userRepo, user))
+  .then(data => displayStepGoals())
 }
 
 const generateHydration = () => {
@@ -59,7 +59,6 @@ const setUpHydrationRepo = () => {
   .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
   .then(data => console.log('hydrationRepo', hydrationRepo))
   .then(data => findCurrentDate())
-  .then(data => findDailyHydration())
   .then(data => displayHydration())
 }
 
@@ -216,6 +215,7 @@ const findDailyHydration = () => {
 }
 
 const displayHydration = () => {
+  findDailyHydration()
   dailyWater.innerText = `${findDailyHydration()}`;
   displayWeeklyHydration();
   displayDailyWater();
