@@ -72,7 +72,6 @@ const setUpSleepRepo = () => {
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
     .then(data => console.log('sleepRepo', sleepRepo))
     .then(data => displayDailySleepStats())
-    .then(data => findWeeklySleepAvg())
     .then(data => displayWeeklySleepAvgs())
   }
 
@@ -239,6 +238,7 @@ const findWeeklySleepAvg = (stats) => {
 }
 
 const displayWeeklySleepAvgs = () => {
+  findWeeklySleepAvg();
   weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
   weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
   displayWeeklySleep();
