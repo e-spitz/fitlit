@@ -3,7 +3,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
-import { fetchAPIData } from './apiCalls'
+import { fetchAPIData } from './apiCalls';
 import Hydration from './Hydration';
 import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
@@ -31,12 +31,13 @@ window.addEventListener('load', function() {
   setUpHydrationRepo();
   generateSleep();
   setUpSleepRepo();
-})
+});
 
+//API CALLS
 const generateUser = () => {
   fetchAPIData('users')
   .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
-  .then(data => displayUserProfile(user));
+  .then(data => displayUserProfile(user))
 }
 
 const setUpUserRepo = () => {
@@ -68,6 +69,7 @@ const setUpSleepRepo = () => {
   .then(data => displayWeeklySleepAvgs())
 }
 
+//FUNCTIONS
 const displayUserProfile = (user) => {
   strideLength.insertAdjacentHTML('afterend', `<p class='user-stride'>${user.strideLength}</p>`);
   email.insertAdjacentHTML('afterend', `<p class='user-email'>${user.email}</p>`);
@@ -98,7 +100,7 @@ const displayStepGoals = () => {
 
 const findCurrentDate = () => {
   currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
-  return currentDate
+  return currentDate;
 };
 
 const findDailyHydration = () => {
@@ -122,8 +124,8 @@ const findDailySleepQuality = () => {
 }
 
 const displayDailySleepStats = () => {
-  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`
-  dailySleepQuality.innerText = `${findDailySleepQuality()}`
+  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`;
+  dailySleepQuality.innerText = `${findDailySleepQuality()}`;
 }
 
 const findWeeklySleepAvg = (stats) => {
@@ -134,8 +136,8 @@ const findWeeklySleepAvg = (stats) => {
 
 const displayWeeklySleepAvgs = () => {
   findWeeklySleepAvg();
-  weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
-  weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
+  weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`;
+  weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`;
   displayWeeklySleep();
 }
 
