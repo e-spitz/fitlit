@@ -36,37 +36,37 @@ window.addEventListener('load', function() {
 //API CALLS
 const generateUser = () => {
   fetchAPIData('users')
-  .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
-  .then(data => displayUserProfile(user))
+    .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
+    .then(data => displayUserProfile(user))
 }
 
 const setUpUserRepo = () => {
   fetchAPIData('users')
-  .then(data => userRepo = new UserRepository(data.userData))
-  .then(data => displayStepGoals())
+    .then(data => userRepo = new UserRepository(data.userData))
+    .then(data => displayStepGoals())
 }
 
 const generateHydration = () => {
   fetchAPIData('hydration')
-  .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
+    .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
 }
 
 const setUpHydrationRepo = () => {
   fetchAPIData('hydration')
-  .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-  .then(data => displayHydration())
+    .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
+    .then(data => displayHydration())
 }
 
 const generateSleep = () => {
   fetchAPIData('sleep')
-  .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
+    .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
 }
 
 const setUpSleepRepo = () => {
   fetchAPIData('sleep')
-  .then(data => sleepRepo = new SleepRepo(data.sleepData))
-  .then(data => displayDailySleepStats())
-  .then(data => displayWeeklySleepAvgs())
+    .then(data => sleepRepo = new SleepRepo(data.sleepData))
+    .then(data => displayDailySleepStats())
+    .then(data => displayWeeklySleepAvgs())
 }
 
 //FUNCTIONS
@@ -150,7 +150,7 @@ const displayStepChart = () => {
       datasets: [
         {
           label: 'Steps',
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
           data: [user.dailyStepGoal, userRepo.calculateAvgStepGoal()]
         }
       ]
@@ -176,15 +176,15 @@ const displayWeeklyHydration = () => {
         borderColor: "#3e95cd",
         fill: false
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Weekly Hydration'
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly Hydration'
+      }
     }
-  }
-});
+  });
 }
 
 const displayWeeklySleep = () => {
@@ -204,15 +204,15 @@ const displayWeeklySleep = () => {
         borderColor: "#3e95cd",
         fill: false
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Weekly Sleep Stats',
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly Sleep Stats',
+      }
     }
-  }
-});
+  });
 }
 
 const displayDailyWater = () => {
@@ -223,7 +223,7 @@ const displayDailyWater = () => {
       datasets: [
         {
           label: 'Ounces of Water',
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
           data: [hydration.numOunces, 75]
         }
       ]
