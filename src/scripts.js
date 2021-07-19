@@ -19,7 +19,6 @@ const weeklySleepChart = document.getElementById('weeklySleepChart');
 let currentDate;
 let hydration;
 let hydrationRepo;
-let sleep;
 let sleepRepo;
 let user;
 let userRepo;
