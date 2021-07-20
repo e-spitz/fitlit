@@ -1,5 +1,3 @@
-const allSleepQualityAvg = [];
-
 class SleepRepo {
   constructor(sleepData) {
     this.sleepData = sleepData;

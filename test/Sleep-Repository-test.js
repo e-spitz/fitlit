@@ -22,7 +22,7 @@ describe('Sleep Repo', () => {
 
   it('should hold all sleep objects', () => {
     expect(sleepRepo.sleepData[0]).to.be.an('object');
-    expect(sleepRepo.sleepData[0]).to.deep.equal({"userID":1,"date":"2019/06/15","hoursSlept":6.1,"sleepQuality":2.2});
+    expect(sleepRepo.sleepData[0]).to.deep.equal({"userID": 1, "date": "2019/06/15", "hoursSlept": 6.1, "sleepQuality": 2.2});
     expect(sleepRepo.sleepData[2].userID).to.equal(3);
   });
 
@@ -53,21 +53,21 @@ describe('Sleep Repo', () => {
   });
 
   it('should be able to find how many hours a user has slept on a specific date', () => {
-    let dailyHours = sleepRepo.getSleepStatByDate(10,'2019/06/15', 'hoursSlept');
+    let dailyHours = sleepRepo.getSleepStatByDate(10, '2019/06/15', 'hoursSlept');
 
     expect(dailyHours).to.be.a('number');
     expect(dailyHours).to.equal(4.4);
   });
 
   it('should be able to find how many hours a user has slept on a specific date', () => {
-    let dailyRating = sleepRepo.getSleepStatByDate(10,'2019/06/15', 'sleepQuality');
+    let dailyRating = sleepRepo.getSleepStatByDate(10, '2019/06/15', 'sleepQuality');
 
     expect(dailyRating).to.be.a('number');
     expect(dailyRating).to.equal(1.6);
   });
 
   it('should return a user\'s hours of sleep for each day in a given week', () => {
-    let weeklyHours = sleepRepo.getSleepStatsByWeek(1,'2019/06/23', 'hoursSlept');
+    let weeklyHours = sleepRepo.getSleepStatsByWeek(1, '2019/06/23', 'hoursSlept');
 
     expect(weeklyHours).to.be.a('object');
     expect(weeklyHours).to.deep.equal({
@@ -97,7 +97,7 @@ describe('Sleep Repo', () => {
   });
 
   it('should return a user\'s hours of sleep for each day in a given week', () => {
-    let weeklyHoursAvg = sleepRepo.getAvgSleepStatsByWeek(1,'2019/06/23', 'hoursSlept');
+    let weeklyHoursAvg = sleepRepo.getAvgSleepStatsByWeek(1, '2019/06/23', 'hoursSlept');
 
     expect(weeklyHoursAvg).to.be.a('string');
     expect(weeklyHoursAvg).to.equal('8.7');

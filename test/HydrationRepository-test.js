@@ -21,7 +21,7 @@ describe('Hydration Repo', () => {
 
   it('should hold all hydration objects', () => {
     expect(hydrationRepo.hydrationData[0]).to.be.a('object');
-    expect(hydrationRepo.hydrationData[0]).to.deep.equal({"userID":1,"date":"2019/06/15","numOunces":37});
+    expect(hydrationRepo.hydrationData[0]).to.deep.equal({"userID": 1, "date": "2019/06/15", "numOunces": 37});
     expect(hydrationRepo.hydrationData[2].userID).to.equal(3);
   });
 
@@ -40,14 +40,14 @@ describe('Hydration Repo', () => {
   });
 
   it('should be able to find how many ounces a user consumed on a specific date', () => {
-    let dailyOunces = hydrationRepo.getOuncesByDate(10,'2019/06/15');
+    let dailyOunces = hydrationRepo.getOuncesByDate(10, '2019/06/15');
 
     expect(dailyOunces).to.be.a('number');
     expect(dailyOunces).to.equal(75);
   });
 
   it('should return a user\'s ounces consumed for each day in a given week', () => {
-    let weeklyOunces = hydrationRepo.getOuncesByWeek(1,'2019/06/23');
+    let weeklyOunces = hydrationRepo.getOuncesByWeek(1, '2019/06/23');
 
     expect(weeklyOunces).to.be.a('object');
     expect(weeklyOunces).to.deep.equal({
