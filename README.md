@@ -5,6 +5,7 @@ Fit Lit - Turing School of Software & Design - Mod 2
 ## Table of Contents
   - [Abstract](#abstract)
   - [Technologies](#technologies)
+  - [Code Architecture](#code-architecture)
   - [Illustrations](#illustrations)
   - [Install + Setup](#set-up)
   - [Contributors](#contributors)
@@ -23,6 +24,12 @@ Fit Lit - Turing School of Software & Design - Mod 2
   - eslint
   - Chart.js
   - figma.com (used to build wireframe)
+
+## Code Architecture
+  - OOP Principles
+  - Vanilla JavaScript
+  - Array Iterator Methods
+
 
 ## Illustrations
 
