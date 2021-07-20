@@ -1,7 +1,6 @@
 * {
   font-family: 'Montserrat', 'sans-serif';
   color: #ffffff;
-  /* border: 1px white solid; */
 }
 
 body, html {
@@ -11,7 +10,6 @@ body, html {
 
 h1 {
   text-align: center;
-  font-size: 20px;
 }
 
 h2, h3 {
@@ -44,18 +42,6 @@ header {
   padding-bottom: 6%;
   margin-left: 6%;
 }
-
-/* .user-info {
-  margin: 0;
-  display: flex;
-  justify-content: space-evenly;
-  height: 100%;
-  width: 100%;
-
-  flex-wrap: wrap;
-  border-top: 3px solid #3e95cd;
-  padding-top: 2%;
-} */
 
 .user-stride, .user-step-goal, .user-address, .user-email {
   margin-top: -1em;
@@ -99,6 +85,18 @@ header {
   color: #8e5ea2;
 }
 
+.hydration-section, .sleep-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  gap: 1em;
+  height: 75%;
+  width: 100%;
+  margin-bottom: -5%;
+  margin-left: 1%;
+}
+
 .info-card {
   display: flex;
   justify-content: center;
@@ -106,18 +104,6 @@ header {
   width: 90%;
   height: 100%;
   border-radius: 2.5%;
-}
-
-.hydration-section, .sleep-section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: space-around;
-  align-items: center;
-  gap: 3em;
-  height: 75%;
-  width: 100%;
-  margin-bottom: -5%;
-  margin-left: 1%;
 }
 
 .user-profile-info {
@@ -134,7 +120,6 @@ header {
 .steps-chart {
   height: 25%;
   width: 25%;
-  /* margin-right: 2%; */
   float: right;
 }
 
@@ -146,15 +131,15 @@ header {
   padding: 1em;
 }
 
-.display-number {
-  font-size: 4em;
-}
-
 h4, h5, h6 {
-  font-size: 1.1em;
+  font-size: 1.8em;
   font-weight: lighter;
   text-align: center;
   margin: 5%;
+}
+
+.display-number {
+  font-size: 4em;
 }
 
 .water-text-styling {
@@ -172,16 +157,15 @@ h4, h5, h6 {
 .adjacent-stats {
   display: flex;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
 }
 
 .sleep-word-alignment {
-  display:flex;
+  display: flex;
   flex-direction:column;
   align-items:center;
 }
 
-@media screen and (max-width: 953px) {
+/* @media screen and (max-width: 953px) {
   .step-info {
     font-size: 1.5em;
     height: 50%;
@@ -197,20 +181,29 @@ h4, h5, h6 {
     height: 40%;
     width: 40%;
   }
-}
+} */
 
 
 @media screen and (max-width: 768px) {
 
+  h1 {
+    text-align: left;
+  }
+
+  header {
+    width: 100%;
+    height: 20%;
+  }
+
   .user-stride, .user-step-goal, .user-address, .user-email {
     margin-top: -1em;
-    margin-right: .5em;
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   .step-info {
     font-size: 1.5em;
-    padding: 0%;
+    padding-top: .5em;
+    padding-bottom: .5em;
     height: 40%;
     width: 40%;
   }
@@ -230,26 +223,36 @@ h4, h5, h6 {
     width: 40%;
   }
 
+  h2, h3 {
+    font-size: 2.25em;
+    padding-bottom: .25em;
+    border-bottom: 3px solid #3e95cd;
+  }
+
+  h4, h5, h6 {
+    margin-top: 0;
+  }
+
+  .display-number {
+    font-size: 3.8em;
+  }
+
+  .hydration-section, .sleep-section {
+    margin-left: 15%;
+    grid-template-columns: repeat(1, 1fr);
+    gap: .4em;
+  }
+
   .info-card {
-    /* width: 60%; */
-    height: 75%;
-    margin-bottom: 10%
-    /* flex-shrink: 3; */
+    width: 70%;
+    height: 85%;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 
-  h4 {
-    font-size: 1em;
+  .weekly-hydration-chart, .weekly-sleep-chart {
+    height: 50%;
+    width: 70%;
   }
-
-  /* .weekly-hydration-chart,
-  .weekly-sleep-chart,
-  .daily-water-chart {
-    padding-top: 5%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 15%;
-    width: 25%;
-  } */
 
 }
