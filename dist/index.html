@@ -30,79 +30,71 @@
       <div class="steps-chart">
         <canvas id="stepsChart" width="1" height="1"></canvas>
       </div>
-
-
     </header>
-    <h2><i class= "fas fa-tint"></i>Hydration</h2>
-    <div class="hydration-section">
+      <h2><i class= "fas fa-tint"></i>Hydration</h2>
+      <section class="hydration-section">
 
-      <section class="user-info">
-        <section class="info-card water-stat" id= "dailyWaterCard">
-          <h4>Daily water consumption</h4>
-          <div class="water-text-styling">
-            <div class= "display-number" id= "dailyWater"></div>
-            <div>ounces</div>
-          </div>
-        </section>
+          <section class="info-card water-stat" id= "dailyWaterCard">
+            <h4>Daily water consumption</h4>
+            <div class="water-text-styling">
+              <div class= "display-number" id= "dailyWater"></div>
+              <div>ounces</div>
+            </div>
+          </section>
 
-        <section class="info-card">
-          <div class="daily-water-chart">
-            <canvas class="chart" id="dailyWaterChart" width="1" height="1"></canvas>
-          </div>
-        </section>
+          <section class="info-card">
+            <div class="daily-water-chart">
+              <canvas class="chart" id="dailyWaterChart" width="1" height="1"></canvas>
+            </div>
+          </section>
 
-        <section class="info-card">
-          <div class="weekly-hydration-chart">
-            <canvas class="chart" id="weeklyHydrationChart" width="1" height="1"></canvas>
-          </div>
-        </section>
+          <section class="info-card">
+            <div class="weekly-hydration-chart">
+              <canvas class="chart" id="weeklyHydrationChart" width="1" height="1"></canvas>
+            </div>
+          </section>
       </section>
-    </div>
 
-
-    <h3><i class="fas fa-bed"></i>Sleep</h3>
-    <div class="sleep-section">
-      <section class= "user-info">
-<!-- Today's Sleep Stats Card -->
-        <section class="info-card sleep-card-styling" id= "dailySleep">
-          <h5>Daily Sleep</h5>
-
-          <div class = "adjacent-stats">
-            <div class= "sleep-word-alignment">
-              <div class= "display-number" id= "dailySleepHours">###</div>
-              <div>hours</div>
+      <h3><i class="fas fa-bed"></i>Sleep</h3>
+      <section class="sleep-section">
+  <!-- Today's Sleep Stats Card -->
+          <section class="info-card sleep-card-styling" id= "dailySleep">
+            <h5>Daily Sleep</h5>
+            
+            <div class = "adjacent-stats">
+              <div class= "sleep-word-alignment">
+                <div class= "display-number" id= "dailySleepHours">###</div>
+                <div>hours</div>
+              </div>
+              <div class= "sleep-word-alignment">
+                <div class= "display-number" id= "dailySleepQuality">###</div>
+                <div>quality</div>
+              </div>
             </div>
-            <div class= "sleep-word-alignment">
-              <div class= "display-number" id= "dailySleepQuality">###</div>
-              <div>quality</div>
-            </div>
-          </div>
-        </section>
-<!-- Average Sleep This Week Card -->
-        <section class="info-card sleep-card-styling" id="weeklySleepCard">
-          <h6>Average Sleep This Week</h6>
-          <div class= "adjacent-stats">
-            <div class = "sleep-word-alignment">
-              <div class= "display-number" id= "weeklySleepHours">###</div>
-              <div>hours</div>
-            </div>
+          </section>
+  <!-- Average Sleep This Week Card -->
+          <section class="info-card sleep-card-styling" id="weeklySleepCard">
+            <h6>Average Sleep This Week</h6>
 
-            <div class = "sleep-word-alignment">
-              <div class= "display-number" id= "weeklySleepQuality">###</div>
-              <div>quality</div>
-            </div>
-          </div>
-        </section>
-<!-- Weekly Sleep Card -->
-        <section class="info-card">
-          <div class="weekly-sleep-chart">
-            <canvas class="chart" id="weeklySleepChart" width="1" height="1"></canvas>
-          </div>
-        </section>
+            <div class= "adjacent-stats">
+              <div class = "sleep-word-alignment">
+                <div class= "display-number" id= "weeklySleepHours">###</div>
+                <div>hours</div>
+              </div>
 
+              <div class = "sleep-word-alignment">
+                <div class= "display-number" id= "weeklySleepQuality">###</div>
+                <div>quality</div>
+              </div>
+            </div>
+          </section>
+  <!-- Weekly Sleep Card -->
+          <section class="info-card">
+            <div class="weekly-sleep-chart">
+              <canvas class="chart" id="weeklySleepChart" width="1" height="1"></canvas>
+            </div>
+          </section>
       </section>
-    </div>
-
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="bundle.js"></script>
