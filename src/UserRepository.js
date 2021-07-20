@@ -16,6 +16,6 @@ class UserRepository {
     let roundedAvg = Math.round(avgStepGoal / this.userData.length);
     return roundedAvg;
   }
-};
+}
 
 export default UserRepository;

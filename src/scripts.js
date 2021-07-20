@@ -2,28 +2,26 @@
 import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 
-import { fetchAPIData } from './apiCalls'
-import User from './User';
-import UserRepository from './UserRepository';
+import { fetchAPIData } from './apiCalls';
 import Hydration from './Hydration';
 import HydrationRepo from './HydrationRepository';
 import Sleep from './Sleep';
 import SleepRepo from './SleepRepository';
+import User from './User';
+import UserRepository from './UserRepository';
 
+const dailyWaterChart = document.getElementById('dailyWaterChart');
 const stepsChart = document.getElementById('stepsChart');
 const weeklyHydrationChart = document.getElementById('weeklyHydrationChart');
 const weeklySleepChart = document.getElementById('weeklySleepChart');
-const dailyWaterChart = document.getElementById('dailyWaterChart');
 
-let user;
-let userRepo;
+let currentDate;
 let hydration;
 let hydrationRepo;
-let sleep;
 let sleepRepo;
-let currentDate;
+let user;
+let userRepo;
 
 window.addEventListener('load', function() {
   generateUser();
@@ -32,59 +30,46 @@ window.addEventListener('load', function() {
   setUpHydrationRepo();
   generateSleep();
   setUpSleepRepo();
-})
+});
 
+//API CALLS
 const generateUser = () => {
   fetchAPIData('users')
-  .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
-  .then(data => console.log('userAPI', user))
-  .then(data => displayUserProfile(user));
+    .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
+    .then(data => displayUserProfile(user))
 }
 
 const setUpUserRepo = () => {
   fetchAPIData('users')
-  .then(data => userRepo = new UserRepository(data.userData))
-  .then(data => console.log('userRepo', userRepo))
-  .then(data => displayStepGoals(userRepo, user))
+    .then(data => userRepo = new UserRepository(data.userData))
+    .then(data => displayStepGoals())
 }
 
 const generateHydration = () => {
   fetchAPIData('hydration')
-  .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
-  .then(data => console.log('hydrationAPI', hydration))
+    .then(data => hydration = new Hydration(data.hydrationData[user.id - 1]))
 }
 
 const setUpHydrationRepo = () => {
   fetchAPIData('hydration')
-  .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
-  .then(data => console.log('hydrationRepo', hydrationRepo))
-  .then(data => findCurrentDate())
-  .then(data => findDailyHydration())
-  .then(data => displayHydration())
+    .then(data => hydrationRepo = new HydrationRepo(data.hydrationData))
+    .then(data => displayHydration())
 }
 
 const generateSleep = () => {
   fetchAPIData('sleep')
-  .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
-  .then(data => console.log('sleepAPI', sleep))
+    .then(data => sleep = new Sleep(data.sleepData[user.id - 1]))
 }
 
 const setUpSleepRepo = () => {
-    fetchAPIData('sleep')
+  fetchAPIData('sleep')
     .then(data => sleepRepo = new SleepRepo(data.sleepData))
-    .then(data => console.log('sleepRepo', sleepRepo))
-    .then(data => findDailyHoursOfSleep())
-    .then(data => findDailySleepQuality())
     .then(data => displayDailySleepStats())
-    .then(data => findWeeklySleepAvg())
     .then(data => displayWeeklySleepAvgs())
-  }
+}
 
-
-// ON PAGE LOAD
-// Display user info
-  // replace innerText of all user profile info fields to reflect the current random user
- const displayUserProfile = (user) => {
+//FUNCTIONS
+const displayUserProfile = (user) => {
   strideLength.insertAdjacentHTML('afterend', `<p class='user-stride'>${user.strideLength}</p>`);
   email.insertAdjacentHTML('afterend', `<p class='user-email'>${user.email}</p>`);
   stepGoal.insertAdjacentHTML('afterend', `<p class='user-step-goal'>${user.dailyStepGoal}</p>`);
@@ -93,10 +78,10 @@ const setUpSleepRepo = () => {
 }
 
 const changeAddressFormat = () => {
-    let split = user.address.split(', ')
-    let street = split[0];
-    let cityStateZip = split[1]
-    address.insertAdjacentHTML('afterend', `<p class='user-address'>${street},<br>${cityStateZip}</p>`);
+  let split = user.address.split(', ')
+  let street = split[0];
+  let cityStateZip = split[1];
+  address.insertAdjacentHTML('afterend', `<p class='user-address'>${street},<br>${cityStateZip}</p>`);
 }
 
 const displayGreeting = (user) => {
@@ -111,6 +96,51 @@ const displayStepGoals = () => {
   displayStepChart();
 }
 
+
+const findCurrentDate = () => {
+  currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
+  return currentDate;
+};
+
+const findDailyHydration = () => {
+  return hydrationRepo.getOuncesByDate(user.id, currentDate);
+}
+
+const displayHydration = () => {
+  findCurrentDate();
+  findDailyHydration();
+  dailyWater.innerText = `${findDailyHydration()}`;
+  displayWeeklyHydration();
+  displayDailyWater();
+}
+
+const findDailyHoursOfSleep = () => {
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
+}
+
+const findDailySleepQuality = () => {
+  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
+}
+
+const displayDailySleepStats = () => {
+  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`;
+  dailySleepQuality.innerText = `${findDailySleepQuality()}`;
+}
+
+const findWeeklySleepAvg = (stats) => {
+  findDailyHoursOfSleep();
+  displayDailySleepStats();
+  return sleepRepo.getAvgSleepStatsByWeek(user.id, currentDate, stats);
+}
+
+const displayWeeklySleepAvgs = () => {
+  findWeeklySleepAvg();
+  weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`;
+  weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`;
+  displayWeeklySleep();
+}
+
+//CHARTS
 const displayStepChart = () => {
   let stepChart = new Chart(stepsChart, {
     type: 'bar',
@@ -119,7 +149,7 @@ const displayStepChart = () => {
       datasets: [
         {
           label: 'Steps',
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
           data: [user.dailyStepGoal, userRepo.calculateAvgStepGoal()]
         }
       ]
@@ -140,11 +170,11 @@ const displayWeeklyHydration = () => {
     data: {
       labels: Object.keys(hydrationRepo.getOuncesByWeek(user.id, currentDate)),
       datasets: [{
-          data: Object.values(hydrationRepo.getOuncesByWeek(user.id, currentDate)),
-          label: "Ounces",
-          borderColor: "#3e95cd",
-          fill: false
-        }
+        data: Object.values(hydrationRepo.getOuncesByWeek(user.id, currentDate)),
+        label: "Ounces",
+        borderColor: "#3e95cd",
+        fill: false
+      }
       ]
     },
     options: {
@@ -162,17 +192,17 @@ const displayWeeklySleep = () => {
     data: {
       labels: Object.keys(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
       datasets: [{
-          data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
-          label: "Hours Slept",
-          borderColor: "#3e95cd",
-          fill: false
-        },
-        {
+        data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'hoursSlept')),
+        label: "Hours Slept",
+        borderColor: "#3e95cd",
+        fill: false
+      },
+      {
         data: Object.values(sleepRepo.getSleepStatsByWeek(user.id, currentDate, 'sleepQuality')),
         label: "Sleep Quality",
         borderColor: "#3e95cd",
         fill: false
-        }
+      }
       ]
     },
     options: {
@@ -192,7 +222,7 @@ const displayDailyWater = () => {
       datasets: [
         {
           label: 'Ounces of Water',
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
           data: [hydration.numOunces, 75]
         }
       ]
@@ -204,42 +234,4 @@ const displayDailyWater = () => {
       }
     }
   });
-}
-
-const findCurrentDate = () => {
-  currentDate = hydrationRepo.hydrationData.map(hydration => hydration.date).pop();
-  return currentDate
-};
-
-const findDailyHydration = () => {
-  return hydrationRepo.getOuncesByDate(user.id, currentDate);
-}
-
-const displayHydration = () => {
-  dailyWater.innerText = `${findDailyHydration()}`;
-  displayWeeklyHydration();
-  displayDailyWater();
-}
-
-const findDailyHoursOfSleep = () => {
-  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'hoursSlept');
-}
-
-const findDailySleepQuality = () => {
-  return sleepRepo.getSleepStatByDate(user.id, currentDate, 'sleepQuality');
-}
-
-const displayDailySleepStats = () => {
-  dailySleepHours.innerText = `${findDailyHoursOfSleep()}`
-  dailySleepQuality.innerText = `${findDailySleepQuality()}`
-}
-
-const findWeeklySleepAvg = (stats) => {
-  return sleepRepo.getAvgSleepStatsByWeek(user.id, currentDate, stats);
-}
-
-const displayWeeklySleepAvgs = () => {
-  weeklySleepHours.innerText = `${findWeeklySleepAvg('hoursSlept')}`
-  weeklySleepQuality.innerText = `${findWeeklySleepAvg('sleepQuality')}`
-  displayWeeklySleep();
 }
