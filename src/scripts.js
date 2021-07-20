@@ -1,8 +1,5 @@
-// An example of how you tell webpack to use a CSS file
+// IMPORTS
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
 import { fetchAPIData } from './apiCalls';
 import Hydration from './Hydration';
 import HydrationRepo from './HydrationRepository';
@@ -11,6 +8,8 @@ import SleepRepo from './SleepRepository';
 import User from './User';
 import UserRepository from './UserRepository';
 
+
+// QUERY SELECTORS
 const address = document.getElementById('address');
 const avgSteps = document.getElementById('avgSteps');
 const dailySleepHours = document.getElementById('dailySleepHours');
@@ -36,6 +35,7 @@ let sleepRepo;
 let user;
 let userRepo;
 
+// EVENT LISTENERS
 window.addEventListener('load', function() {
   generateUser();
   setUpUserRepo();
@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
   setUpSleepRepo();
 });
 
-//API CALLS
+// API CALLS
 const generateUser = () => {
   fetchAPIData('users')
     .then(data => user = new User(data.userData[Math.floor(Math.random() * data.userData.length)]))
@@ -81,7 +81,7 @@ const setUpSleepRepo = () => {
     .then(data => displayWeeklySleepAvgs())
 }
 
-//FUNCTIONS
+// FUNCTIONS
 const displayUserProfile = (user) => {
   strideLength.insertAdjacentHTML('afterend', `<p class='user-stride'>${user.strideLength}</p>`);
   email.insertAdjacentHTML('afterend', `<p class='user-email'>${user.email}</p>`);
@@ -153,7 +153,7 @@ const displayWeeklySleepAvgs = () => {
   displayWeeklySleep();
 }
 
-//CHARTS
+// CHARTS
 const displayStepChart = () => {
   let stepChart = new Chart(stepsChart, {
     type: 'bar',
