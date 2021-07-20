@@ -3,6 +3,11 @@
   color: #ffffff;
 }
 
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
 body, html {
   background-color: #161C23;
   padding-bottom: 4%;
@@ -165,11 +170,13 @@ h4, h5, h6 {
   align-items:center;
 }
 
-/* @media screen and (max-width: 953px) {
+@media screen and (max-width: 1050px) {
+
   .step-info {
     font-size: 1.5em;
     height: 50%;
-    width: 0%;
+    width: 50%;
+    margin-bottom: 1em;
   }
 
   .steps-goal, .average-steps {
@@ -181,7 +188,7 @@ h4, h5, h6 {
     height: 40%;
     width: 40%;
   }
-} */
+}
 
 
 @media screen and (max-width: 768px) {
