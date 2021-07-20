@@ -1,82 +1,56 @@
-# FitLit Starter Kit
+# Title
+Fit Lit - Turing School of Software & Design - Mod 2
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
 
-## Setup
+## Table of Contents
+  - [Abstract](#abstract)
+  - [Technologies](#technologies)
+  - [Illustrations](#illustrations)
+  - [Install + Setup](#set-up)
+  - [Contributors](#contributors)
+	- [Wins](#wins)
+	- [Challenges + Improvements](#challenges-+-Improvements)
+  - [Project Specs](#project-specs)
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+## Abstract
+	Fit Lit is a fitness application designed to keep track of and display a user's fitness data. The user fills out profile information which is stored on their account and displayed on page load. Also displayed on page load is a variety of fitness information organized into categories of steps, hydration and sleep. The steps section displays the user's step goal in comparison to the aggregate step goal of all users on Fit Lit. The Hydration section displays the user's daily water consumption, their daily consumption as a proportion of FitLit's recommended water intake, and their water consumption over the previous week. The Sleep section displays the user's number of hours slept and sleep quality for the day, averaged for the week, and charted daily for the previous week. The display of all of this information is responsive to view on a desktop, tablet or mobile device.
 
-## Testing
+## Technologies
+  - Javascript (vanilla)
+  - HTML
+  - CSS
+  - Mocha/Chai
+  - eslint
+  - Chart.js
+  - figma.com (used to build wireframe)
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+## Illustrations
 
-## Linting Your Code
+![recording (5)](https://user-images.githubusercontent.com/63213406/126401645-dc3e2aa7-6d9b-4383-9c3f-630dc28e4d25.gif)
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+## Install + Setup
+	- To download and use Fit Lit, you can fork and/or clone it to your local machine.
+  - Navigate (cd) into the new directory.
+  - Enter the following command to open Fitlit in your browser - open src/index.html
+  - OR visit our deployed Fit Lit page - [here]()
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## Contributors
+  - [Erica Spitz](https://github.com/e-spitz)
+  - [Mae Duphorne](https://github.com/maeduphorne)
 
-## Data Model
+## Wins
+	- Effective and efficient testing for all JavaScript classes, methods and properties
+  - Separation of Data Model versus DOM
+  - Demonstrate several examples of using dynamic, DRY code
+  - Learning our first library, Chart.js
 
-**Users**
+## Challenges + Improvements
+	- We ran into design challenges in making the page responsive.
+  - We had some difficulties with the styling of the charts in Chart.js
+  For future Iterations:
+  - We would like to add the ability for a user to pick the date they can see information for. Currently the user's page starts at the current date only.
+  - We would like to add additional data related to the user's daily activity
+  - We would like to add ability for the user to interact with other users - friendly competitions, leaderboards, more comparative stats, etc.
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+## Project Specs
+  - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/fitlit.html)
