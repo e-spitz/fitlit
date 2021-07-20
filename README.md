@@ -28,8 +28,13 @@ Fit Lit - Turing School of Software & Design - Mod 2
 ## Code Architecture
   - OOP Principles
   - Vanilla JavaScript
-  - Array Iterator Methods
-
+    - Array Iterator Methods
+  - Separate JavaScript files
+    - User/UserRepository
+    - Hydration/HydrationRepository
+    - Sleep/SleepRepository
+    - API call function
+    - Scripts.js - all DOM related work
 
 ## Illustrations
 
