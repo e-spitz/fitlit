@@ -43,7 +43,7 @@ Fit Lit is a fitness application designed to keep track of and display a user's 
 ## Install + Setup
   - To download and use Fit Lit, you can fork and/or clone it to your local machine.
   - Navigate (cd) into the new directory.
-  - Enter the following command to open Fitlit in your browser - open src/index.html
+  - Enter the following command to open Fitlit in your browser - open dist/index.html
   - OR visit our deployed Fit Lit page - [here]()
 
 ## Contributors
