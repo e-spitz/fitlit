@@ -59,7 +59,7 @@ Fit Lit is a fitness application designed to keep track of and display a user's 
 ## Challenges + Improvements
   - We ran into design challenges in making the page responsive.
   - We had some difficulties with the styling of the charts in Chart.js
-  For future Iterations:
+  - For future Iterations:
   - We would like to add the ability for a user to pick the date they can see information for. Currently the user's page starts at the current date only.
   - We would like to add additional data related to the user's daily activity
   - We would like to add ability for the user to interact with other users - friendly competitions, leaderboards, more comparative stats, etc.
