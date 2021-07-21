@@ -1,5 +1,5 @@
-# Title
-Fit Lit - Turing School of Software & Design - Mod 2
+# Fit Lit
+Turing School of Software & Design - Mod 2
 
 
 ## Table of Contents
